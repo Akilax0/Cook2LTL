@@ -1,7 +1,6 @@
 from sentence_transformers import SentenceTransformer, util
 from string import punctuation
 from tqdm import tqdm
-import openai
 import statistics
 import spacy
 import pickle
@@ -9,9 +8,12 @@ import time
 import copy
 import csv
 import re
+import os
+
+import google.generativeai as genai
 
 class Cook2LTL():
-	def __init__(self, example_functions, primitive_imports, similarity_threshold, model_embedding, model_spacy, ner_model):
+	def __init__(self, example_functions, primitive_imports, similarity_threshold, model_embedding, model_spacy, ner_model, gemini_model="gemini-1.5-pro"):
 		self.example_functions = example_functions
 		self.primitive_imports = primitive_imports
 		self.primitive_actions = [item.replace("<obj>", "").replace("<time>", "").strip() for item in self.primitive_imports]
@@ -21,6 +23,7 @@ class Cook2LTL():
 		self.primitive_embs = self.get_primitive_word_embeddings()
 		self.model_spacy = model_spacy
 		self.ner_model = ner_model
+		self.gemini_model = gemini_model  # Gemini model to use (e.g., "gemini-1.5-pro", "gemini-1.5-flash", "gemini-pro")
 		self.ner_labels = ["VERB", "WHAT", "WHERE", "HOW", "TIME", "TEMP"]
 		self.num_api_calls = 0
 		self.total_latency = 0
@@ -106,18 +109,46 @@ class Cook2LTL():
 	"""
 	def dict_to_action_function(self, ner_dict):
 		assert ner_dict["VERB"], "No action verb detected"
-		action_function = f"def {', '.join(ner_dict['VERB'])}("
+		
+		# Normalize values to lists of strings (handle both list and string inputs)
+		def normalize_value(val):
+			if isinstance(val, list):
+				# Flatten nested lists and convert all items to strings
+				result = []
+				for item in val:
+					if isinstance(item, list):
+						result.extend([str(x) for x in item])
+					else:
+						result.append(str(item))
+				return result
+			elif isinstance(val, str):
+				return [val]
+			else:
+				return [str(val)]
+		
+		verb_list = normalize_value(ner_dict['VERB'])
+		action_function = f"def {', '.join(verb_list)}("
 
 		if "WHAT" in ner_dict and ner_dict["WHAT"]:
-			action_function += f"{', '.join(ner_dict['WHAT'])}: what"
+			what_list = normalize_value(ner_dict["WHAT"])
+			if what_list:
+				action_function += f"{', '.join(what_list)}: what"
 		if "WHERE" in ner_dict and ner_dict["WHERE"]:
-			action_function += f", {', '.join(ner_dict['WHERE'])}: where"
+			where_list = normalize_value(ner_dict["WHERE"])
+			if where_list:
+				action_function += f", {', '.join(where_list)}: where"
 		if "HOW" in ner_dict and ner_dict["HOW"]:
-			action_function += f", {', '.join(ner_dict['HOW'])}: how"
+			how_list = normalize_value(ner_dict["HOW"])
+			if how_list:
+				action_function += f", {', '.join(how_list)}: how"
 		if "TIME" in ner_dict and ner_dict["TIME"]:
-			action_function += f", {', '.join(ner_dict['TIME'])}: time"
+			time_list = normalize_value(ner_dict["TIME"])
+			if time_list:
+				action_function += f", {', '.join(time_list)}: time"
 		if "TEMP" in ner_dict and ner_dict["TEMP"]:
-			action_function += f", {', '.join(ner_dict['TEMP'])}: temp"
+			temp_list = normalize_value(ner_dict["TEMP"])
+			if temp_list:
+				action_function += f", {', '.join(temp_list)}: temp"
 
 		action_function += ")"
 		return action_function
@@ -126,7 +157,7 @@ class Cook2LTL():
 	Uses the trained NER model to assign the following tags to the parts of a recipe step:
 		("VERB", "WHAT", "WHERE", "HOW", "TIME", "TEMP")
 	"""
-	def get_ner_tags(self, sentences):
+	def get_ner_tags(self, recipes):
 		action_dicts = []
 		for recipe in recipes:
 			recipe_dicts = []
@@ -166,9 +197,12 @@ class Cook2LTL():
 	if the cosine similarity exceeds the similarity threshold.
 	"""
 	def word_similarity(self, runtime_action_dict, cached_actions):
+		# Safely get verb, return None if not available
+		if not runtime_action_dict.get("VERB") or len(runtime_action_dict["VERB"]) == 0:
+			return None
 		verb = runtime_action_dict["VERB"][0]
-		what = runtime_action_dict["WHAT"]
-		sentence = " ".join([item for sublist in list(runtime_action_dict.values()) for item in sublist])
+		what = runtime_action_dict.get("WHAT", [])
+		sentence = " ".join([item for sublist in list(runtime_action_dict.values()) for item in sublist if isinstance(sublist, list)])
 		contextual_embedding = self.get_contextual_word_embedding(sentence, verb)
 		global_embedding = self.model_embedding.encode(verb)
 		similar_action = None
@@ -198,9 +232,6 @@ class Cook2LTL():
 	"""
 	def parse_chunks(self, recipe_dicts):
 		all_dicts = []
-		intermediate_action_dicts = []
-		ltl_operators = []
-		action_dicts = []
 		disj_words = ["or"]
 		conj_words = ["and"]
 		neg_words = ["not", "don't", "never", "dont"]
@@ -208,6 +239,8 @@ class Cook2LTL():
 		for recipe_dict_list in recipe_dicts:
 			per_recipe_dicts = []
 			for individual_dict in recipe_dict_list:
+				intermediate_action_dicts = []
+				final_dicts = []
 				disjunction = {k: False for k in self.ner_labels}
 				conjunction = {k: False for k in self.ner_labels}
 				action_dict = {key: ", ".join(val) for key, val in individual_dict.items()}
@@ -229,8 +262,13 @@ class Cook2LTL():
 						disj = True
 						disj_parts = [item.strip() for item in action_dict[label].split(" or ")]
 						for part in disj_parts:
-							derived_action_dict = copy.deepcopy(action_dict)
-							derived_action_dict[label] = part
+							# Create a dict with list values (matching individual_dict format)
+							derived_action_dict = copy.deepcopy(individual_dict)
+							# Convert the part back to list format if needed
+							if isinstance(part, str):
+								derived_action_dict[label] = [part]
+							else:
+								derived_action_dict[label] = part if isinstance(part, list) else [part]
 							intermediate_action_dicts.append(derived_action_dict)
 							intermediate_action_dicts.append("OR")
 				if not disj:
@@ -240,11 +278,20 @@ class Cook2LTL():
 						intermediate_action_dicts.pop()
 					for derived_dict in intermediate_action_dicts:
 						if derived_dict != "OR":
-							conj_parts = [item.strip() for item in derived_dict["VERB"][0].split(" and ")]
+							# Ensure VERB is a list before accessing [0]
+							verb_value = derived_dict["VERB"]
+							if isinstance(verb_value, list) and len(verb_value) > 0:
+								verb_str = verb_value[0]
+							elif isinstance(verb_value, str):
+								verb_str = verb_value
+							else:
+								continue  # Skip if VERB is invalid
+							conj_parts = [item.strip() for item in verb_str.split(" and ")]
 							and_dicts = []
 							for part in conj_parts:
 								derived_action_dict = copy.deepcopy(derived_dict)
-								derived_action_dict["VERB"] = part
+								# Ensure VERB is stored as a list
+								derived_action_dict["VERB"] = [part] if isinstance(part, str) else part
 								and_dicts.append(derived_action_dict)
 							if disj:
 								final_dicts.append(and_dicts)
@@ -256,10 +303,10 @@ class Cook2LTL():
 				if disj and final_dicts[-1] == "OR":
 					final_dicts.pop()
 				if not conj and not disj:
-					final_dicts = individual_dict
+					final_dicts = [individual_dict]
 				if neg:
 					neg_dicts = []
-					for j in range(final_dicts):
+					for j in range(len(final_dicts)):
 						neg_dicts.append("NOT")
 						neg_dicts.append(final_dicts[j])
 					final_dicts = neg_dicts
@@ -274,15 +321,51 @@ class Cook2LTL():
 		# prepare prompt with sentence as comment, function definition, and available objects
 		prompt, action_function, action_dict = prompt_tuple[0], prompt_tuple[1], prompt_tuple[2]
 		start_time = time.time()
-		response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}], temperature=0.7)
-		elapsed_time = time.time() - start_time
-		# if response and response["choices"][0]["message"]["content"]:
-		if True:
+
+		# Use Gemini instead of OpenAI ChatCompletion
+		try:
+			model = genai.GenerativeModel(self.gemini_model)
+			response = model.generate_content(prompt)
+			elapsed_time = time.time() - start_time
+		except Exception as e:
+			print(f"Error calling Gemini API: {e}")
+			elapsed_time = time.time() - start_time
 			self.total_latency += elapsed_time
 			self.num_api_calls += 1
-			self.total_cost += self.compute_cost(response["usage"]["prompt_tokens"], response["usage"]["completion_tokens"])
+			return [], ""
+
+		# Check if response has text content
+		if not response:
+			print("Warning: Empty response from Gemini API")
+			self.total_latency += elapsed_time
+			self.num_api_calls += 1
+			return [], ""
+		
+		# Handle potential errors in response
+		if hasattr(response, "prompt_feedback") and response.prompt_feedback.block_reason:
+			print(f"Warning: Response blocked - {response.prompt_feedback.block_reason}")
+			self.total_latency += elapsed_time
+			self.num_api_calls += 1
+			return [], ""
+		
+		text = getattr(response, "text", None)
+		if not text:
+			print("Warning: No text content in Gemini API response")
+			self.total_latency += elapsed_time
+			self.num_api_calls += 1
+			return [], ""
+
+		if text:
+			self.total_latency += elapsed_time
+			self.num_api_calls += 1
+
+			usage = getattr(response, "usage_metadata", None)
+			if usage is not None:
+				prompt_tokens = getattr(usage, "prompt_token_count", 0)
+				completion_tokens = getattr(usage, "candidates_token_count", 0)
+				self.total_cost += self.compute_cost(prompt_tokens, completion_tokens)
+
 			# parse output into function
-			text = response["choices"][0]["message"]["content"]
 			print(f"RUN\n")
 			print(text)
 			self.llm_output[action_function] = text
@@ -298,8 +381,14 @@ class Cook2LTL():
 				if find_verb:
 					f_verb = find_verb.group(0).strip()
 					verbs.append(f_verb)
-				f_params = function[function.find("(")+1:function.find(")")]
-				f_params = [param.strip() for param in f_params.split(",")]
+				# Safely extract parameters, handling cases where parentheses might be missing
+				open_paren = function.find("(")
+				close_paren = function.find(")")
+				if open_paren != -1 and close_paren != -1 and close_paren > open_paren:
+					f_params = function[open_paren+1:close_paren]
+					f_params = [param.strip() for param in f_params.split(",") if param.strip()]
+				else:
+					f_params = []
 				params.append(f_params)
 			self.num_generated_actions.append(len(verbs))
 			self.cache_action(action_dict, verbs, params)
@@ -316,20 +405,30 @@ class Cook2LTL():
 					non_primitive_found = True
 					break
 		if not non_primitive_found:
-			new_verb = action_dict["VERB"][0]
+			# Safely get VERB, defaulting to empty list if not present
+			if not action_dict.get("VERB"):
+				return  # Skip caching if no verb
+			new_verb = action_dict["VERB"][0] if isinstance(action_dict["VERB"], list) and len(action_dict["VERB"]) > 0 else str(action_dict["VERB"])
 			param_type =[]
 			for k, param_list in enumerate(params):
 				param_type.append([])
 				for param in param_list:
-					if param in " ".join(action_dict["WHAT"]):
+					# Safely join lists, defaulting to empty string if key doesn't exist
+					what_str = " ".join(action_dict.get("WHAT", []))
+					where_str = " ".join(action_dict.get("WHERE", []))
+					how_str = " ".join(action_dict.get("HOW", []))
+					time_str = " ".join(action_dict.get("TIME", []))
+					temp_str = " ".join(action_dict.get("TEMP", []))
+					
+					if param in what_str:
 						param_type[k].append("WHAT")
-					elif param in " ".join(action_dict["WHERE"]):
+					elif param in where_str:
 						param_type[k].append("WHERE")
-					elif param in " ".join(action_dict["HOW"]):
+					elif param in how_str:
 						param_type[k].append("HOW")
-					elif param in " ".join(action_dict["TIME"]):
+					elif param in time_str:
 						param_type[k].append("TIME")
-					elif param in " ".join(action_dict["TEMP"]):
+					elif param in temp_str:
 						param_type[k].append("TEMP")
 					else:
 						param_type[k].append("OTHER")
@@ -354,7 +453,12 @@ class Cook2LTL():
 			for param in cached_param_list:
 				if param == "OTHER":
 					continue
-				new_params.append(", ".join(runtime_action_dict[param]))
+				# Safely get the parameter value, defaulting to empty list if key doesn't exist
+				param_value = runtime_action_dict.get(param, [])
+				if isinstance(param_value, list):
+					new_params.append(", ".join(param_value))
+				else:
+					new_params.append(str(param_value))
 			atomic_function = f"{cached_dict['verbs'][j]}({', '.join(new_params)})"
 			new_fun.append(atomic_function)
 		adapted_function_body = "\n".join(new_fun)
@@ -369,7 +473,14 @@ class Cook2LTL():
 	"""
 	def create_prompt(self, action_function, action_dict):
 		task_description = "Complete the function at the bottom only using actions from the imported actions and objects from the available objects. You can only pick up one object at a time."
-		return f"{task_description}\n\nfrom actions import {', '.join(self.primitive_imports)}\n\n{self.example_functions}\n{action_function}:\n\tavailable_objects = [microwave, potato]", action_function, action_dict # [fridge, apple] \n\tavailable_objects = [lettuce]
+		prompt = (
+			f"{task_description}\n\n"
+			f"from actions import {', '.join(self.primitive_imports)}\n\n"
+			f"{self.example_functions}\n"
+			f"{action_function}:\n"
+			f"\tavailable_objects = [microwave, potato]\n"
+		)
+		return prompt, action_function, action_dict
 
 	"""
 	Translates a recipe in natural language to an LTL formula
@@ -400,6 +511,8 @@ class Cook2LTL():
 		for action in plan:
 			if action in self.primitive_actions or action in self.action_library:
 				executable_actions += 1
+		if num_actions == 0:
+			num_actions =1
 		executability = executable_actions / num_actions
 		self.executability.append(executability)
 
@@ -413,6 +526,7 @@ class Cook2LTL():
 			if condition not in final_object_states:
 				success = False
 				break
+		return success
 
 	"""
 	Computes total cost of API calls
@@ -435,14 +549,29 @@ class Cook2LTL():
 			print(f"Total cost of API calls: {round(self.total_cost, 2)} $\n")
 		else:
 			print(f"Total cost of API calls: {self.total_cost} $\n")
-		print(f"Average time per API call: {round(self.total_latency / self.num_api_calls, 2)}")
-		cost_per_call = self.total_cost / self.num_api_calls
-		if cost_per_call >= 0.01:
-			print(f"Average cost per API call: {round(cost_per_call, 2)}\n")
+		
+		# Avoid division by zero
+		if self.num_api_calls > 0:
+			print(f"Average time per API call: {round(self.total_latency / self.num_api_calls, 2)}")
+			cost_per_call = self.total_cost / self.num_api_calls
+			if cost_per_call >= 0.01:
+				print(f"Average cost per API call: {round(cost_per_call, 2)}\n")
+			else:
+				print(f"Average cost per API call: {cost_per_call}\n")
 		else:
-			print(f"Average cost per API call: {cost_per_call}\n")
-		print(f"Average executability: {round(statistics.mean(self.executability), 2)}\n")
-		print(f"Average length of generated plan (number of generated actions): {round(statistics.mean(self.num_generated_actions), 2)}")
+			print("Average time per API call: N/A (no API calls made)")
+			print("Average cost per API call: N/A (no API calls made)\n")
+		
+		if self.executability:
+			print(f"Average executability: {round(statistics.mean(self.executability), 2)}\n")
+		else:
+			print("Average executability: N/A (no executability data)\n")
+		
+		if self.num_generated_actions:
+			print(f"Average length of generated plan (number of generated actions): {round(statistics.mean(self.num_generated_actions), 2)}")
+		else:
+			print("Average length of generated plan: N/A (no generated actions)")
+		
 		# print(f"Number of substitutions: {self.num_substitutions}")
 		print(f"Number of substitutions: {self.prim_substitutions}")
 		# self.save_action_library()
@@ -453,12 +582,28 @@ if __name__ == "__main__":
 	sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
 	spacy_model = spacy.load("en_core_web_md")
 	ner_model = spacy.load("ner_500_md")
-	openai.organization = ""
-	openai.api_key = ""
+
+	# Configure Gemini API (expects GEMINI_API_KEY environment variable)
+	
+	# Specify which Gemini model to use
+	# Available models:
+	# - "gemini-1.5-pro" (default) - Most capable, best for complex tasks
+	# - "gemini-1.5-flash" - Faster and cheaper, good for most tasks
+	# - "gemini-pro" - Older model, still available
+	# You can also set via environment variable: export GEMINI_MODEL="gemini-1.5-flash"
+	gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash-lite")
+	
 	csv_file_path = "edited_recipes.csv"
 	prompt_path = "ai2thor_prompt.txt"
-	prompt_file = open(prompt_path, "r")
-	example_functions = prompt_file.read()
+	try:
+		with open(prompt_path, "r") as prompt_file:
+			example_functions = prompt_file.read()
+	except FileNotFoundError:
+		print(f"Error: Could not find prompt file: {prompt_path}")
+		exit(1)
+	except Exception as e:
+		print(f"Error reading prompt file: {e}")
+		exit(1)
 
 	# Beetz most frequent: 1. Add/Combine, 2. Pick/Place, 3. Fill/Pour, 4. Remove, 5. Stir/Beat, 6. Serve, 7. Mix/Blend ()
 	# 8. Bake, 9. Cook/Simmer/Boil, 10. Cut/Chop/Slice, 11. Sprinkle, 12. Flip/Turn Over, 13. Regrigerate/Cool/Freeze, 14. Shake, 15. Wait
@@ -472,54 +617,74 @@ if __name__ == "__main__":
 	learned_actions = {}
 	available_objects = ["oven", "microwave", "pot", "pan", "bowl", "refrigerator"]
 	
-	cook = Cook2LTL(example_functions, primitive_imports, similarity_threshold, sbert_model, spacy_model, ner_model)
+	# Initialize Cook2LTL with the specified Gemini model
+	cook = Cook2LTL(example_functions, primitive_imports, similarity_threshold, sbert_model, spacy_model, ner_model, gemini_model=gemini_model)
 	recipes = cook.read_recipes(csv_file_path)
 	recipes = cook.preprocess(recipes)
 	action_dicts = cook.get_ner_tags(recipes)
-	# filtering out examples where the NER did not detect a verb
+	# filtering out examples where the NER did not detect a verb or a WHAT-object
 	action_dicts = [[action_dict for action_dict in item if action_dict["VERB"] != [] and action_dict["WHAT"] != []] for item in action_dicts]
 	action_dicts = cook.parse_chunks(action_dicts)
-	# for recipe_num, recipe in tqdm(enumerate(action_dicts)):
-		# plan = []
-	# 	for action_dict in recipe:
-	# 		if action_dict != "OR":
-	# recipes = [["Refrigerate the apple."]]
-	# action_dict = cook.get_ner_tags(recipes)
-	plan = []
-	for i in range(10):
-		if type(action_dict) == dict:
-			action_function = cook.dict_to_action_function(action_dict)
-			# if cook.word_similarity(action_dict, cook.primitive_actions) is not None:
-			# 	breakpoint()
-			# if action_dict["VERB"][0] not in cook.primitive_actions:
-			# 	sim_word = cook.word_similarity(action_dict, cook.primitive_actions)
-			verb = action_dict["VERB"][0]
-			query_llm = True
-			if verb in cook.primitive_actions:
-				plan.append(action_function[4:])
-				cook.executability.append(1)
-				cook.prim_substitutions += 1
-				query_llm = False
-			elif verb in cook.action_library:
-				for implementation in cook.action_library[verb]:
-					if cook.action_compatibility(action_dict, implementation["action_dict"]):
-						plan.append(cook.reuse_cached_action(verb, action_dict, implementation))
-						cook.num_substitutions += 1
-						cook.executability.append(1)
-						query_llm = False
-			if query_llm:
-				prompt = cook.create_prompt(action_function, action_dict)
-				verbs, gen_subplan = cook.action_reduction(prompt)
-				plan.append(gen_subplan)
-				cook.compute_executability(verbs)
-		elif type(action_dict) == list:
-			action_dict.pop(0)
-			for subdict in action_dict:
-				if subdict != "OR":
-					adjusted_subdict = {key: [val] for key, val in subdict.items()}
+
+	for recipe_num, recipe in tqdm(enumerate(action_dicts)):
+		plan = []
+		for action_dict in recipe:
+			if isinstance(action_dict, dict):
+				action_function = cook.dict_to_action_function(action_dict)
+				verb = action_dict["VERB"][0]
+				query_llm = True
+
+				if verb in cook.primitive_actions:
+					plan.append(action_function[4:])
+					cook.executability.append(1)
+					cook.prim_substitutions += 1
+					query_llm = False
+				elif verb in cook.action_library:
+					for implementation in cook.action_library[verb]:
+						if cook.action_compatibility(action_dict, implementation["action_dict"]):
+							plan.append(cook.reuse_cached_action(verb, action_dict, implementation))
+							cook.num_substitutions += 1
+							cook.executability.append(1)
+							query_llm = False
+
+				if query_llm:
+					prompt = cook.create_prompt(action_function, action_dict)
+					verbs, gen_subplan = cook.action_reduction(prompt)
+					plan.append(gen_subplan)
+					cook.compute_executability(verbs)
+
+			elif isinstance(action_dict, list):
+				# handle disjunction / NOT structures
+				if action_dict and action_dict[0] == "NOT":
+					action_dict = action_dict[1:]
+
+				for subdict in action_dict:
+					if subdict == "OR":
+						continue
+
+					# Normalize subdict to ensure all values are lists of strings
+					adjusted_subdict = {}
+					for key, val in subdict.items():
+						if isinstance(val, list):
+							# Flatten nested lists and ensure all items are strings
+							normalized = []
+							for item in val:
+								if isinstance(item, list):
+									normalized.extend([str(x) for x in item])
+								else:
+									normalized.append(str(item))
+							adjusted_subdict[key] = normalized
+						elif isinstance(val, str):
+							adjusted_subdict[key] = [val]
+						else:
+							adjusted_subdict[key] = [str(val)]
+					
 					action_function = cook.dict_to_action_function(adjusted_subdict)
+					if not adjusted_subdict.get("VERB"):
+						continue  # Skip if no verb found
 					verb = adjusted_subdict["VERB"][0]
 					query_llm = True
+
 					if verb in cook.primitive_actions:
 						plan.append(action_function[4:])
 						cook.executability.append(1)
@@ -532,10 +697,12 @@ if __name__ == "__main__":
 								cook.num_substitutions += 1
 								cook.executability.append(1)
 								query_llm = False
+
 					if query_llm:
 						prompt = cook.create_prompt(action_function, adjusted_subdict)
 						verbs, gen_subplan = cook.action_reduction(prompt)
 						plan.append(gen_subplan)
 						cook.compute_executability(verbs)
+
 	cook.print_metrics()
 	cook.save_llm_output()
