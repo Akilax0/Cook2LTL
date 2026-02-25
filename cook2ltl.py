@@ -196,6 +196,7 @@ class Cook2LTL():
 	Returns the most similar action from a set of cached actions (primitive set/action library) to a given action
 	if the cosine similarity exceeds the similarity threshold.
 	"""
+	# Not used
 	def word_similarity(self, runtime_action_dict, cached_actions):
 		# Safely get verb, return None if not available
 		if not runtime_action_dict.get("VERB") or len(runtime_action_dict["VERB"]) == 0:
@@ -235,7 +236,7 @@ class Cook2LTL():
 		disj_words = ["or"]
 		conj_words = ["and"]
 		neg_words = ["not", "don't", "never", "dont"]
-		conj_exclusions = ["mac and cheese", "macaroni and cheese", "fish and chips"]
+		#conj_exclusions = ["mac and cheese", "macaroni and cheese", "fish and chips"]
 		for recipe_dict_list in recipe_dicts:
 			per_recipe_dicts = []
 			for individual_dict in recipe_dict_list:
@@ -622,8 +623,9 @@ if __name__ == "__main__":
 	recipes = cook.read_recipes(csv_file_path)
 	recipes = cook.preprocess(recipes)
 	action_dicts = cook.get_ner_tags(recipes)
-	# filtering out examples where the NER did not detect a verb or a WHAT-object
+	# filtering out examples where the NER did not detect a VERB or a WHAT-OBJ
 	action_dicts = [[action_dict for action_dict in item if action_dict["VERB"] != [] and action_dict["WHAT"] != []] for item in action_dicts]
+	print("Action Dicts:",action_dicts)
 	action_dicts = cook.parse_chunks(action_dicts)
 
 	for recipe_num, recipe in tqdm(enumerate(action_dicts)):

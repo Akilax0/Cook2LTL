@@ -1,0 +1,697 @@
+Action Dicts: [[{'VERB': ['put'], 'WHAT': ['the seltzer'], 'WHERE': ['in a blender'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['squeeze'], 'WHAT': ['the juice'], 'WHERE': ['from a lemon', 'on the seltzer'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['the splenda and', 'the watermelon'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': ['then'], 'TEMP': []}, {'VERB': ['blend'], 'WHAT': ['mix'], 'WHERE': [], 'HOW': [], 'TIME': ['until slushy'], 'TEMP': []}], [{'VERB': ['put'], 'WHAT': ['milk, onion salt and pepper sauce'], 'WHERE': ['into a medium saucepan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['tear'], 'WHAT': ['cheese'], 'WHERE': [], 'HOW': ['into small pieces'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['cheese'], 'WHERE': ['to pan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['heat'], 'WHAT': ['the cheese'], 'WHERE': [], 'HOW': [], 'TIME': ['until cheese is melted and mixture is smooth'], 'TEMP': ['over medium-low to medium heat']}], [{'VERB': ['rub'], 'WHAT': ['ribs'], 'WHERE': [], 'HOW': ['with the mix'], 'TIME': [], 'TEMP': []}, {'VERB': ['add in'], 'WHAT': ['tomato sauce and vinegar'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['baste'], 'WHAT': ['the ribs'], 'WHERE': [], 'HOW': ['with mix'], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['ribs'], 'WHERE': [], 'HOW': [], 'TIME': ['for 1 hour'], 'TEMP': []}], [{'VERB': ['heat'], 'WHAT': ['breakfast links'], 'WHERE': [], 'HOW': ['as directed on package'], 'TIME': [], 'TEMP': []}, {'VERB': ['cut'], 'WHAT': ['breakfast links'], 'WHERE': [], 'HOW': ['lengthwise', 'in half'], 'TIME': [], 'TEMP': []}, {'VERB': ['spread'], 'WHAT': ['tortilla'], 'WHERE': [], 'HOW': ['with reduced-fat cream cheese'], 'TIME': [], 'TEMP': []}, {'VERB': ['top'], 'WHAT': ['tortilla'], 'WHERE': [], 'HOW': ['with links'], 'TIME': [], 'TEMP': []}, {'VERB': ['fold'], 'WHAT': ['tortilla'], 'WHERE': [], 'HOW': ['in half'], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['tortilla'], 'WHERE': ['in nonstick skillet'], 'HOW': [], 'TIME': ['2 minutes or until lightly browned'], 'TEMP': ['medium heat']}], [{'VERB': ['drain'], 'WHAT': ['beef and bacon'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['onion'], 'WHERE': ['to the meat'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['the meat'], 'WHERE': [], 'HOW': [], 'TIME': ['until transparent'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['the rest of the ingredients'], 'WHERE': ['to the meat'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['heat'], 'WHAT': ['the meat'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['simmer'], 'WHAT': ['the meat'], 'WHERE': [], 'HOW': [], 'TIME': ['10 minutes'], 'TEMP': []}, {'VERB': ['serve'], 'WHAT': ['the meat'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['combine'], 'WHAT': ['cream cheese'], 'WHERE': [], 'HOW': ['with lowfat milk'], 'TIME': [], 'TEMP': []}, {'VERB': ['add in'], 'WHAT': ['sugar and salt'], 'WHERE': ['to the mix'], 'HOW': ['gradually'], 'TIME': [], 'TEMP': []}, {'VERB': ['stir in'], 'WHAT': ['the mix melted chocolate'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['beat'], 'WHAT': ['mix'], 'WHERE': [], 'HOW': [], 'TIME': ['till smooth'], 'TEMP': []}], [{'VERB': ['dissolve'], 'WHAT': ['jello'], 'WHERE': ['in boiling water'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['the milk and fruit'], 'WHERE': ['to the jello'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['the jello'], 'WHERE': ['in other ingredients'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['mix'], 'WHERE': ['into shallow dish'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cover'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['put'], 'WHAT': ['mix'], 'WHERE': ['in the fridge'], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['preheat'], 'WHAT': ['oven'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['400 degrees']}, {'VERB': ['combine'], 'WHAT': ['ingredients'], 'WHERE': ['in large bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir in'], 'WHAT': ['the mix rhubarb and nuts'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['mix'], 'WHERE': ['in lined muffin tins'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['combine'], 'WHAT': ['topping ingredients'], 'WHERE': ['in small bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['sprinkle'], 'WHAT': ['topping ingredients'], 'WHERE': ['on muffins'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['muffins'], 'WHERE': [], 'HOW': [], 'TIME': ['for 20 minutes'], 'TEMP': []}], [{'VERB': ['trim'], 'WHAT': ['the ends of the onions'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['remove'], 'WHAT': ['outer layer of the onions'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['the onions'], 'WHERE': ['in salted boiling water'], 'HOW': [], 'TIME': ["for 30-50 minutes until soft and onion layers start to 'come apart'"], 'TEMP': []}, {'VERB': ['drain'], 'WHAT': ['water'], 'WHERE': ['from the onions'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['toss'], 'WHAT': ['onions'], 'WHERE': [], 'HOW': ['with margarine, sugar, salt and pepper'], 'TIME': [], 'TEMP': []}, {'VERB': ['heat up'], 'WHAT': ['onions'], 'WHERE': [], 'HOW': [], 'TIME': ['just before serving'], 'TEMP': []}], [{'VERB': ['fry'], 'WHAT': ['chicken'], 'WHERE': [], 'HOW': [], 'TIME': ['til golden brown'], 'TEMP': []}, {'VERB': ['heat'], 'WHAT': ['the butter'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['mix'], 'WHAT': ['butter'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['puree'], 'WHAT': ['buter'], 'WHERE': [], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['toss'], 'WHAT': ['chicken wings'], 'WHERE': ['in mixture'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['chicken'], 'WHERE': ['onto platter'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['garnish'], 'WHAT': ['chicken'], 'WHERE': [], 'HOW': ['with leftover puree and limes'], 'TIME': [], 'TEMP': []}], [{'VERB': ['put'], 'WHAT': ['the chocolate bar'], 'WHERE': ['into a microwave-safe bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['the milk'], 'WHERE': ['to the chocolate'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['greek yogurt'], 'WHERE': ['into the chocolate mixture'], 'HOW': [], 'TIME': ['until smooth'], 'TEMP': []}], [{'VERB': ['drain'], 'WHAT': ['the meat'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['tomato sauce, undrained tomatoes, water, pasta, beans, 1/4 cup cheese and chili powder'], 'WHERE': ['to the meat'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cover'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['stirring occasionally'], 'TIME': ['10 to 12 minutes or until tender'], 'TEMP': ['on medium heat']}, {'VERB': ['sprinkle'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['with remaining cheese'], 'TIME': ['just before serving'], 'TEMP': []}], [{'VERB': ['mix'], 'WHAT': ['the gochujang, vinegar, sugar, berry extract and soy sauce'], 'WHERE': ['in a large bowl'], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['the noodles,'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['a cup of cold water'], 'WHERE': ['to the noodles'], 'HOW': [], 'TIME': ['when the water returns to the boil'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['cold water'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['drain'], 'WHAT': ['the noodles'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['rinse'], 'WHAT': ['the noodles'], 'WHERE': [], 'HOW': ['with cold water'], 'TIME': [], 'TEMP': []}, {'VERB': ['drain'], 'WHAT': ['the noodles'], 'WHERE': [], 'HOW': ['well'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['noodles to the bowl of seasoning'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['divide'], 'WHAT': ['noodles among 4 plates or bowls'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['top'], 'WHAT': ['each bowl'], 'WHERE': [], 'HOW': ['with cucumber'], 'TIME': [], 'TEMP': []}, {'VERB': ['serve'], 'WHAT': ['noodles'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['add'], 'WHAT': ['all ingredients except'], 'WHERE': ['to soup pan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cover'], 'WHAT': ['pan'], 'WHERE': [], 'HOW': ['with water'], 'TIME': [], 'TEMP': []}, {'VERB': ['simmer'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': ['4 hours covered,', 'until the peas break up'], 'TEMP': []}, {'VERB': ['remove'], 'WHAT': ['lid'], 'WHERE': ['from the pan'], 'HOW': [], 'TIME': ['after the peas break up'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['evaporated milk'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['serve'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['combine'], 'WHAT': ['broccoli, cauliflower, water, salt, and basil'], 'WHERE': ['in saucepan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['ingredients'], 'WHERE': [], 'HOW': [], 'TIME': ['till tender'], 'TEMP': []}, {'VERB': ['heat'], 'WHAT': ['butter'], 'WHERE': ['in separate pan'], 'HOW': [], 'TIME': ['till lightly browned'], 'TEMP': []}, {'VERB': ['add in'], 'WHAT': ['flour'], 'WHERE': ['to the butter'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['butter'], 'WHERE': [], 'HOW': [], 'TIME': ['till smooth'], 'TEMP': []}, {'VERB': ['add in'], 'WHAT': ['lowfat milk'], 'WHERE': ['to the butter'], 'HOW': ['gradually', 'stirring constantly, till thickened'], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['butter'], 'WHERE': ['over vegetable mix'], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['place'], 'WHAT': ['olives, parmesan cheese, and garlic'], 'WHERE': ['in a food processor'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['olive oil'], 'WHERE': ['to the food processor'], 'HOW': ['slowly'], 'TIME': [], 'TEMP': []}], [{'VERB': ['cut'], 'WHAT': ['chicken'], 'WHERE': [], 'HOW': ['into 1 inch pieces'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['chicken'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['to heated', 'on medium high with oil']}, {'VERB': ['cook'], 'WHAT': ['chicken'], 'WHERE': [], 'HOW': [], 'TIME': ['while stirring', 'for 3-5 minutes until the chicken is slightly brown'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['canned tomatoes, chili sauce, peppers, onions, celery, garlic and spices'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['bring'], 'WHAT': ['mix'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['boil']}, {'VERB': ['reduce'], 'WHAT': ['heat'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cover and simmer'], 'WHAT': ['the chicken'], 'WHERE': [], 'HOW': [], 'TIME': ['for 10 minutes'], 'TEMP': []}], [{'VERB': ['blend'], 'WHAT': ['all ingredients'], 'WHERE': ['in blender'], 'HOW': [], 'TIME': ['until smooth'], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['mix'], 'WHERE': [], 'HOW': ['into 4 glasses'], 'TIME': [], 'TEMP': []}, {'VERB': ['serve'], 'WHAT': ['mix'], 'WHERE': [], 'HOW': [], 'TIME': ['immediately'], 'TEMP': []}], [{'VERB': ['melt'], 'WHAT': ['butter'], 'WHERE': ['in a large skillet'], 'HOW': [], 'TIME': [], 'TEMP': ['over medium heat']}, {'VERB': ['cook'], 'WHAT': ['chops'], 'WHERE': ['in butter'], 'HOW': ['turning to brown evenly'], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['wine'], 'WHERE': ['in the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['simmer'], 'WHAT': ['the chops'], 'WHERE': [], 'HOW': ['uncovered'], 'TIME': ['20 minutes, or until chops are tender'], 'TEMP': []}, {'VERB': ['transfer'], 'WHAT': ['pork chops'], 'WHERE': ['to serving plates'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['spoon'], 'WHAT': ['sauce'], 'WHERE': ['over the meat'], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['mix'], 'WHAT': ['vinegar, mustard, salt and pepper'], 'WHERE': [], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['oil'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['whisk'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': ['until well blended'], 'TEMP': []}, {'VERB': ['spread'], 'WHAT': ['greens'], 'WHERE': ['on plate or', 'in bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cover'], 'WHAT': ['the greens with tomato slices'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['arrange'], 'WHAT': ['cheese slices'], 'WHERE': ['on top of tomatoes'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['sprinkle'], 'WHAT': ['salad'], 'WHERE': [], 'HOW': ['with fresh basil'], 'TIME': [], 'TEMP': []}], [{'VERB': ['cook'], 'WHAT': ['pasta'], 'WHERE': [], 'HOW': ['according to package directions'], 'TIME': [], 'TEMP': []}, {'VERB': ['drain and rinse'], 'WHAT': ['pasta'], 'WHERE': [], 'HOW': ['with cold water'], 'TIME': [], 'TEMP': []}, {'VERB': ['place'], 'WHAT': ['pasta'], 'WHERE': ['in large mixing bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['remaining ingredients'], 'WHERE': ['to the pasta'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['toss'], 'WHAT': ['pasta'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['refrigerate'], 'WHAT': ['pasta'], 'WHERE': [], 'HOW': [], 'TIME': ['until ready'], 'TEMP': []}], [{'VERB': ['place', 'mix'], 'WHAT': ['vegetables', 'other ingredients'], 'WHERE': ['into a large bowl', 'in the bowl'], 'HOW': ['with a thin wire whip'], 'TIME': ['til well mixed'], 'TEMP': []}], [{'VERB': ['preheat'], 'WHAT': ['greased grill'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['medium-high heat']}, {'VERB': ['grill'], 'WHAT': ['fruit'], 'WHERE': [], 'HOW': [], 'TIME': ['3 minutes or until lightly browned'], 'TEMP': []}, {'VERB': ['cut'], 'WHAT': ['fruit'], 'WHERE': ['into 2-inch sticks'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['place'], 'WHAT': ['sticks'], 'WHERE': ['in large salad bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['greens, jicama and tomatoes'], 'WHERE': ['to the bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['toss'], 'WHAT': ['the salad'], 'WHERE': [], 'HOW': ['lightly'], 'TIME': [], 'TEMP': []}, {'VERB': ['drizzle'], 'WHAT': ['the salad'], 'WHERE': [], 'HOW': ['with dressing'], 'TIME': ['just before serving'], 'TEMP': []}], [{'VERB': ['place'], 'WHAT': ['the tomatoes'], 'WHERE': ['in a casserole dish'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['sprinkle'], 'WHAT': ['tomatoes with salt and pepper'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['top'], 'WHAT': ['each tomato'], 'WHERE': [], 'HOW': ['with a pat of butter'], 'TIME': [], 'TEMP': []}, {'VERB': ['sprinkle'], 'WHAT': ['the cheese'], 'WHERE': ['over the tomatoes and'], 'HOW': ['generously'], 'TIME': [], 'TEMP': []}, {'VERB': ['broil'], 'WHAT': ['tomatoes'], 'WHERE': [], 'HOW': [], 'TIME': ['for 10 to 15 minutes, until the tomatoes are heated through and the cheese is bubbly'], 'TEMP': []}], [{'VERB': ['brown'], 'WHAT': ['ground beef with onion'], 'WHERE': ['in stock pot'], 'HOW': ['stirring frequently'], 'TIME': [], 'TEMP': []}, {'VERB': ['drain'], 'WHAT': ['beef'], 'WHERE': [], 'HOW': ['well'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['water, wine,undrained tomatoes, kidney beans, tomato sauce and taco seasoning mix to the beef'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['the beef'], 'WHERE': [], 'HOW': [], 'TIME': ['till mixed well'], 'TEMP': []}, {'VERB': ['cover and simmer'], 'WHAT': ['the beef'], 'WHERE': [], 'HOW': ['stirring occasionally'], 'TIME': ['for 35 to 40 minutes'], 'TEMP': []}, {'VERB': ['garnish'], 'WHAT': ['the beef with the remaining ingredients'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['add'], 'WHAT': ['vanilla and eggs'], 'WHERE': ['to the cream'], 'HOW': [], 'TIME': ['until incorporated'], 'TEMP': []}, {'VERB': ['mix in'], 'WHAT': ['dry ingredients except oatmeal'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['oats, chocolate chips, and cherries'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['line'], 'WHAT': ['a jellyroll pan with foil'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['spray'], 'WHAT': ['the foil with nonstick spray'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': ['20 minutes'], 'TEMP': ['350']}], [{'VERB': ['dissolve'], 'WHAT': ['gelatin'], 'WHERE': ['in hot water'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['cream of mushroom soup, cream cheese'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['heat'], 'WHAT': ['the gelatin'], 'WHERE': [], 'HOW': [], 'TIME': ['until blended'], 'TEMP': ['on low']}, {'VERB': ['add'], 'WHAT': ['celery, green onion, mayonnaise, shrimp'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['well'], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['into mold'], 'TIME': [], 'TEMP': []}, {'VERB': ['put'], 'WHAT': ['the mix'], 'WHERE': ['in fridge'], 'HOW': [], 'TIME': ['until set, about 3 hours'], 'TEMP': []}, {'VERB': ['unmold and serve'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['with crackers'], 'TIME': [], 'TEMP': []}], [{'VERB': ['spread'], 'WHAT': ['peanut butter'], 'WHERE': ['on bread'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['sprinkle'], 'WHAT': ['bread'], 'WHERE': [], 'HOW': ['with white sugar'], 'TIME': [], 'TEMP': []}, {'VERB': ['spread'], 'WHAT': ['creamy salad dressing'], 'WHERE': ['on the bread'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['top'], 'WHAT': ['bread'], 'WHERE': [], 'HOW': ['with tomato slices'], 'TIME': [], 'TEMP': []}, {'VERB': ['sprinkle'], 'WHAT': ['tomatoes'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['combine'], 'WHAT': ['all ingredients'], 'WHERE': ['in a large mixer bowl'], 'HOW': [], 'TIME': ['until smooth about 5-6 minutes'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['eggs'], 'WHERE': ['to the bowl'], 'HOW': [], 'TIME': ['while mixing'], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['the mix'], 'WHERE': ['into well buttered pan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['mix'], 'WHERE': [], 'HOW': [], 'TIME': ['for 60 minutes, or until cake is done'], 'TEMP': ['at 325']}], [{'VERB': ['whisk'], 'WHAT': ['the mayonnaise, sour cream, mustard, lime juice, salt and pepper'], 'WHERE': ['in a medium-glass or stainless steel bowl'], 'HOW': [], 'TIME': ['for 1 minute, or until smooth and well blended'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['the wasabi paste'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['whisk'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['vigorously'], 'TIME': ['for 1 minute, until combined'], 'TEMP': []}], [{'VERB': ['add'], 'WHAT': ['diced bread'], 'WHERE': ['to the soup'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['adjust'], 'WHAT': ['the seasoning'], 'WHERE': ['on the soup'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['drizzle'], 'WHAT': ['the soup'], 'WHERE': [], 'HOW': ['with olive oil'], 'TIME': [], 'TEMP': []}, {'VERB': ['dust'], 'WHAT': ['the soup'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['peel'], 'WHAT': ['the mango'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['place'], 'WHAT': ['mango', 'with ice, sugar, salt and yoghurt'], 'WHERE': ['in blender'], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['blitz'], 'WHAT': ['mango'], 'WHERE': [], 'HOW': [], 'TIME': ['until smooth'], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['mango'], 'WHERE': ['into glasses'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['serve'], 'WHAT': ['the mango'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['preheat'], 'WHAT': ['oven'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['350 degrees']}, {'VERB': ['combine'], 'WHAT': ['all ingredients'], 'WHERE': ['in large bowl'], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['spray'], 'WHAT': ['large casserole dish or baking pan'], 'WHERE': [], 'HOW': ['with non-stick cooking spray'], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['ingredients'], 'WHERE': ['in pan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['ingredients'], 'WHERE': [], 'HOW': [], 'TIME': ['for 1 hour or until knife inserted in middle comes out clean'], 'TEMP': ['at 350 degrees']}], [{'VERB': ['preheat'], 'WHAT': ['oven'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['425 degree f']}, {'VERB': ['put'], 'WHAT': ['butter'], 'WHERE': ['into a pan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['put'], 'WHAT': ['pan'], 'WHERE': ['into the oven'], 'HOW': ['with butter'], 'TIME': ['until butter is melted'], 'TEMP': []}, {'VERB': ['beat'], 'WHAT': ['the eggs, milk, and salt'], 'WHERE': [], 'HOW': [], 'TIME': ['until frothy'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['flour'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['beat'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': ['until mixed'], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['the mix'], 'WHERE': ['over melted butter'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['serve'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['with syrup or jelly'], 'TIME': [], 'TEMP': []}], [{'VERB': ['add'], 'WHAT': ['ice'], 'WHERE': ['to the mix'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['shake'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['well'], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['into a highball glass']}, {'VERB': ['top'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': ['with the ginger'], 'TIME': [], 'TEMP': []}], [{'VERB': ['bring'], 'WHAT': ['the mixture'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cool'], 'WHAT': ['the mixture'], 'WHERE': [], 'HOW': ['slightly'], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['the mixture'], 'WHERE': ['into a clean jar with a tight-fitting lid'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cool'], 'WHAT': ['the mixture'], 'WHERE': [], 'HOW': [], 'TIME': ['for several weeks'], 'TEMP': []}, {'VERB': ['store'], 'WHAT': ['the mix'], 'WHERE': ['in the refrigerator'], 'HOW': [], 'TIME': ['then'], 'TEMP': []}], [{'VERB': ['combine'], 'WHAT': ['all ingredients'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['the ingredients'], 'WHERE': [], 'HOW': [], 'TIME': ['until potatoes are just tender'], 'TEMP': ['over medium heat']}, {'VERB': ['turn down'], 'WHAT': ['heat'], 'WHERE': [], 'HOW': ['to low'], 'TIME': [], 'TEMP': []}, {'VERB': ['simmer'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': ['at least 1'], 'TEMP': []}], [{'VERB': ['combine'], 'WHAT': ['flour, salt and pepper, seasoning and eggs'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['dip'], 'WHAT': ['fish'], 'WHERE': ['in mixture'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['heat'], 'WHAT': ['butter and oil'], 'WHERE': ['in a saute pan'], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['put'], 'WHAT': ['chicken'], 'WHERE': ['in a greased baking dish'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['top'], 'WHAT': ['chicken'], 'WHERE': [], 'HOW': ['with cheese slices, soup'], 'TIME': [], 'TEMP': []}, {'VERB': ['sprinkle'], 'WHAT': ['chicken'], 'WHERE': [], 'HOW': ['with stuffing mix'], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['the chicken covered'], 'WHERE': [], 'HOW': [], 'TIME': ['for 45 minutes'], 'TEMP': ['at 350f']}], [{'VERB': ['sift'], 'WHAT': ['flour and baking powder'], 'WHERE': [], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['stir in'], 'WHAT': ['cheese, bacon and chives'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['mix'], 'WHAT': ['milk and eggs'], 'WHERE': [], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['milk and eggs'], 'WHERE': ['to flour mix'], 'HOW': ['stirring'], 'TIME': ['then', 'until just combined'], 'TEMP': []}, {'VERB': ['spoon'], 'WHAT': ['the mix'], 'WHERE': ['into prepared muffins tins'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['mix'], 'WHERE': [], 'HOW': ['moderately'], 'TIME': ['for 15- 20 minutes'], 'TEMP': ['f']}], [{'VERB': ['preheat'], 'WHAT': ['oven'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['325 degrees']}, {'VERB': ['whisk'], 'WHAT': ['wet ingredients'], 'WHERE': [], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['whisk'], 'WHAT': ['dry ingredients'], 'WHERE': [], 'HOW': ['together'], 'TIME': [], 'TEMP': []}, {'VERB': ['combine'], 'WHAT': ['both bowls of ingredients'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['mix'], 'WHAT': ['the ingredients with hands'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['the ingredients'], 'WHERE': [], 'HOW': [], 'TIME': ['for 15 minutes'], 'TEMP': []}], [{'VERB': ['bring'], 'WHAT': ['vinegar, water, sugar and spices'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['boil']}, {'VERB': ['add'], 'WHAT': ['carrots, cauliflower, red pepper, onions and zucchini'], 'WHERE': ['to the mix'], 'HOW': ['leaving 2-3 minutes between addition of each vegetable'], 'TIME': [], 'TEMP': []}, {'VERB': ['remove'], 'WHAT': ['the mix'], 'WHERE': ['from heat'], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['place'], 'WHAT': ['chicken'], 'WHERE': ['in casserole dish'], 'HOW': ['with marinade'], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['the chicken'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['at 350']}], [{'VERB': ['combine'], 'WHAT': ['water and salt'], 'WHERE': ['in small saucepan'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['bring'], 'WHAT': ['water'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['boil']}, {'VERB': ['mix'], 'WHAT': ['cornmeal'], 'WHERE': ['in a small bowl'], 'HOW': ['with water'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['cornmeal mixture'], 'WHERE': ['to boiling water'], 'HOW': ['slowly', 'stirring constantly'], 'TIME': [], 'TEMP': []}, {'VERB': ['reduce'], 'WHAT': ['heat'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': ['low']}], [{'VERB': ['place'], 'WHAT': ['ingredients'], 'WHERE': ['in the bread machine'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['select'], 'WHAT': ['sweet bread cycle and light crust'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['start'], 'WHAT': ['the machine'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['stir'], 'WHAT': ['cornmeal'], 'WHERE': ['into 2 cups of milk'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['boil'], 'WHAT': ['mixture'], 'WHERE': [], 'HOW': ['making a mush'], 'TIME': [], 'TEMP': []}, {'VERB': ['remove'], 'WHAT': ['mixture'], 'WHERE': ['from heat'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['milk and well-beaten eggs'], 'WHERE': ['to the mixture'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['salt, baking powder and melted butter'], 'WHERE': ['in the mixture'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['bake'], 'WHAT': ['mixture'], 'WHERE': ['in greased casserole'], 'HOW': [], 'TIME': ['for 30 minutes'], 'TEMP': ['350 degrees']}], [{'VERB': ['melt'], 'WHAT': ['butter'], 'WHERE': [], 'HOW': [], 'TIME': ['in 10-inch skillet', 'until sizzling'], 'TEMP': ['over medium-high heat']}, {'VERB': ['add'], 'WHAT': ['shrimp'], 'WHERE': ['to the skillet'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['cook'], 'WHAT': ['shrimp'], 'WHERE': [], 'HOW': [], 'TIME': ['just 2-3 minutes or until shrimp are pink'], 'TEMP': []}, {'VERB': ['remove'], 'WHAT': ['shrimp'], 'WHERE': ['from heat'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['season'], 'WHAT': ['the shrimp'], 'WHERE': [], 'HOW': ['lightly with salt and pepper'], 'TIME': [], 'TEMP': []}, {'VERB': ['combine'], 'WHAT': ['coleslaw mix and dressing'], 'WHERE': ['in bowl'], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['pour'], 'WHAT': ['the diced melons'], 'WHERE': ['in a large glass pitcher'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['top'], 'WHAT': ['melons'], 'WHERE': [], 'HOW': ['with ice'], 'TIME': [], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['lemon juice'], 'WHERE': ['to pitcher'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['wine'], 'WHERE': ['into the glass'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['the wine'], 'WHERE': [], 'HOW': ['with a wooden spoon'], 'TIME': [], 'TEMP': []}], [{'VERB': ['pour'], 'WHAT': ['the champagne and energy drink'], 'WHERE': ['into a large pitcher'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['stir'], 'WHAT': ['the drink'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['pour'], 'WHAT': ['the drink'], 'WHERE': ['into glasses'], 'HOW': [], 'TIME': [], 'TEMP': []}, {'VERB': ['serve'], 'WHAT': ['the drink'], 'WHERE': [], 'HOW': [], 'TIME': [], 'TEMP': []}], [{'VERB': ['beat'], 'WHAT': ['peanut butter, butter, and salt'], 'WHERE': ['in a bowl'], 'HOW': ['using an electric mixer', 'together'], 'TIME': ['until creamy'], 'TEMP': []}, {'VERB': ['beat in'], 'WHAT': ['powdered sugar'], 'WHERE': [], 'HOW': ['with mixer', 'on low speed'], 'TIME': [], 'TEMP': []}, {'VERB': ['increase'], 'WHAT': ['mixer speed'], 'WHERE': [], 'HOW': ['to medium-high'], 'TIME': [], 'TEMP': []}, {'VERB': ['beat'], 'WHAT': ['the mix'], 'WHERE': [], 'HOW': [], 'TIME': ['until light and fluffy'], 'TEMP': []}, {'VERB': ['add'], 'WHAT': ['cocoa powder'], 'WHERE': ['to the mix'], 'HOW': ['beating'], 'TIME': ['until very smooth and creamy'], 'TEMP': []}]]
+Error calling Gemini API: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def add(the splenda and, the watermelon: what, to the mix: where, then: time):
+	available_objects = [microwave, potato]
+        # pick up the splenda
+        pick up(the splenda)
+
+        # put the splenda in the microwave
+        put(the splenda, microwave)
+
+        # pick up the watermelon
+        pick up(the watermelon)
+
+        # put the watermelon in the microwave
+        put(the watermelon, microwave)
+
+        # wait for the time to pass
+        wait(the:time)
+```
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def blend(mix: what, until slushy: time):
+	available_objects = [microwave, potato]
+        # pick up the potato
+        pick up(potato)
+
+        # put the potato in the microwave
+        put(potato, microwave)
+
+        # turn on the microwave
+        turn on(microwave)
+
+        # wait until slushy
+        wait(mix==until slushy)
+
+        # turn off the microwave
+        turn off(microwave)
+```
+Error calling Gemini API: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def add(cheese: what, to pan: where):
+	available_objects = [microwave, potato]
+	# pick up the cheese
+	pick up(cheese)
+
+	# put the cheese on the potato
+	put(cheese, potato)
+```
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def heat(the cheese: what, until cheese is melted and mixture is smooth: time, over medium-low to medium heat: temp):
+	available_objects = [microwave, potato]
+	# pick up the cheese
+	pick up(the cheese)
+
+	# put the cheese in the microwave
+	put(the cheese, microwave)
+
+	# turn on the microwave
+	turn on(microwave)
+
+	# wait until cheese is melted
+	wait(the cheese == until cheese is melted and mixture is smooth)
+
+	# turn off the microwave
+	turn off(microwave)
+```
+Error calling Gemini API: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def add in(tomato sauce and vinegar: what, to the mix: where):
+	available_objects = [microwave, potato]
+        # pick up tomato sauce and vinegar
+        pick up(tomato sauce and vinegar)
+        
+        # put tomato sauce and vinegar in the mix
+        put(tomato sauce and vinegar, the mix)
+```
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def baste(the ribs: what, with mix: how):
+	available_objects = [microwave, potato]
+        # pick up the ribs
+        pick up(the ribs)
+
+        # put the ribs in the microwave
+        put(the ribs, microwave)
+
+        # pick up the mix
+        pick up(mix)
+
+        # use the mix on the ribs
+        use(mix, the ribs)
+```
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def bake(ribs: what, for 1 hour: time):
+	available_objects = [microwave, potato]
+    # pick up the ribs
+    pick up(ribs)
+
+    # put the ribs in the microwave
+    put(ribs, microwave)
+
+    # turn on the microwave
+    turn on(microwave)
+
+    # wait for 1 hour
+    wait(timer == for 1 hour)
+
+    # turn off the microwave
+    turn off(microwave)
+```
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def heat(breakfast links: what, as directed on package: how):
+	available_objects = [microwave, potato]
+    # pick up the breakfast links
+    pick up(breakfast links)
+
+    # put the breakfast links in the microwave
+    put(breakfast links, microwave)
+
+    # turn on the microwave
+    turn on(microwave)
+
+    # wait as directed on package
+    wait(as directed on package)
+
+    # turn off the microwave
+    turn off(microwave)
+```
+RUN
+
+```python
+from actions import pick up <obj>, put <obj>, drop <obj>, open <obj>, close <obj>, break <obj>, cook <obj>, slice <obj>, turn on <obj>, turn off <obj>, use <obj>, fill <obj>, empty <obj>, wait <time>
+
+def refrigerate(cookie: what, until cold:time):
+	available_objects = [cookie, fridge]
+        # open the fridge
+        open(fridge)
+
+        # pick up the cookie
+        pick up(cookie)
+
+        # put the cookie in the fridge
+        put(cookie, fridge)
+
+        # close the fridge
+        close(fridge)
+
+        # wait until the cookie is cold
+        wait(cookie==cold)
+
+def store(fruit: what, cabinet: where):
+    available_objects = [fruit, cabinet]
+        # open the cabinet
+        open(cabinet)
+
+        # pick up the fruit
+        put(fruit)
+
+        # put the fruit in the cabinet
+        put(fruit, cabinet)
+
+        # close the cabinet
+        close(cabinet)
+
+
+def bake(cake: what, oven: where, 30 minutes: time):
+	available_objects = [cake, oven, baking pan]
+        # pick up the cake
+        pick up(cake)
+
+        # put the cake on the baking pan
+        put(cake, baking pan)
+
+        # open the oven
+        open(oven)
+
+        # put the baking pan in the oven
+        put(baking pan, oven)
+
+        # close the oven
+        close(oven)
+
+        # turn on the oven
+        turn on(oven)
+
+        # wait for 30 minutes
+        wait(timer==30 minutes)
+
+        # turn off the oven
+        turn off(oven)
+
+def cut(breakfast links: what, lengthwise, in half: how):
+	available_objects = [microwave, potato]
+        # pick up the breakfast links
+        pick up(breakfast links)
+
+        # slice the breakfast links
+        slice(breakfast links, lengthwise)
+
+        # slice the breakfast links
+        slice(breakfast links, in half)
+```
