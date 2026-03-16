@@ -1,0 +1,3 @@
+[submodule "simulation/FoundationStereo"]
+	path = simulation/FoundationStereo
+	url = git@github.com:NVlabs/FoundationStereo.git
