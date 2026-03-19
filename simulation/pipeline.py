@@ -225,7 +225,7 @@ def crop_stereo_pair(left_path, right_path, box, out_dir,calib_path=None, paddin
 
 # Config
 
-SCENE_DIR = os.path.abspath("../../dataset/Middlebury/Adirondack-perfect")
+SCENE_DIR = os.path.abspath("./dataset/Middlebury/Adirondack-perfect")
 FOUNDATION_DIR = os.path.abspath("./FoundationStereo")
 CKPT = f"{FOUNDATION_DIR}/pretrained_models/23-51-11/model_best_bp2-001.pth"
 TARGET_CLASS = "cup"

@@ -1,3 +1,9 @@
 [submodule "simulation/FoundationStereo"]
 	path = simulation/FoundationStereo
 	url = git@github.com:NVlabs/FoundationStereo.git
+[submodule "simulation/anygrasp/anygrasp_sdk"]
+	path = simulation/anygrasp/anygrasp_sdk
+	url = git@github.com:graspnet/anygrasp_sdk.git
+[submodule "simulation/anygrasp/dependencies/MinkowskiEngine"]
+	path = simulation/anygrasp/dependencies/MinkowskiEngine
+	url = git@github.com:chenxi-wang/MinkowskiEngine.git
