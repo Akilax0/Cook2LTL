@@ -302,36 +302,95 @@ if result.returncode !=0:
     print(f"ERROR:\n{result.stderr}")
     exit()
 
- 
 visualize_point_cloud(f"{OUT_DIR}/cloud.ply")
-
 
 # Load disparity + extract object point cloud
 depth_path = os.path.join(OUT_DIR, "depth_meter.npy")
 cloud_path = os.path.join(OUT_DIR, "cloud_denoise.ply")
 
 #scale YOLO bbox to match the dowscaled depth/point cloud
+# YOLO ran on full res , FoundationStereo at scale to fit GPU
+# Bounding box coordinates and camera intrinsics scaled down to 
+# match smaller depth map
 x1, y1, x2, y2 = target_box
 x1_s = int(x1*SCALE)
 y1_s = int(y1*SCALE)
 x2_s = int(x2*SCALE)
 y2_s = int(y2*SCALE)
 
-
 # Scaled intrinsics 
 focal_s = calib["cam0"][0, 0] * SCALE
 cx_s = calib["cam0"][0, 2] * SCALE
 cy_s = calib["cam0"][1, 2] * SCALE
 
-# Crop stereo pair 
+# Preferred Full 3D point cloud for entire scene. 
+# Figure out which points for the detected object
 
-x1, y1, x2, y2, lp, rp =crop_stereo_pair(
-    left_path = f"{SCENE_DIR}/im0.png",
-    right_path = f"{SCENE_DIR}/im1.png",
-    box = target_box,
-    out_dir = OUT_DIR,
-    calib_path=f"{SCENE_DIR}/calib.txt"
-)
+# reproject every 3D point (X,Y,Z) in cloud onto the 2D image using
+# pinhole camera model
+if os.path.exists(cloud_path):
+    # Option A: Filter the denoised point cloud
+    full_pc = o3d.io.read_point_cloud(cloud_path)
+    points = np.asarray(full_pc.points)
+
+    Z = points[:, 2]
+    u = (points[:, 0] * focal_s / Z) +cx_s # pixel column 
+    v = (points[:, 1] * focal_s / Z) +cy_s # pixel row
+    
+    #Checking if inside YOLO bounding box. 
+    mask = (u>= x1_s) & (u<=x2_s) & (v>=y1_s) & (v<=y2_s) & (Z>0)
+    object_points = points[mask]
+    
+    obj_pc = o3d.geometry.PointCloud()
+    obj_pc.points = o3d.utility.Vector3dVector(object_points)
+    if full_pc.has_colors():
+        obj_pc.colors = o3d.utility.Vector3dVector(np.asarray(full_pc.colors))[mask]
+
+elif os.path.exists(depth_path):
+    # Option B: Build from depth map + scaled bbox
+    depth = np.load(depth_path) # (H_scaled, W_scaled) in meters
+
+    # Load and resize left image to match depth resolution
+    left_img = cv2.imread(f"{SCENE_DIR}/im0.png")
+    left_img = cv2.resize(left_img, fx=SCALE, fy=SCALE, dsize=None)
+    left_rgb = cv2.cvtColor(left_img, cv2.COLOR_BGR2RGB)
+
+
+    v_coords, u_coords = np.meshgrid(
+        np.arange(y1_s, y2_s), np.arange(x1_s, x2_s), indexing="ij"
+    )
+    
+    Z = depth[y1_s:y2_s, x1_s:x2_s]
+    X = (u_coords - cx_s) * Z / focal_s
+    Y = (v_coords - cy_s) * Z / focal_s
+    
+    valid = (Z>0) & (Z<10.0)
+    object_points = np.stack([X[valid], Y[valid], Z[valid]], axis=-1)
+    object_colors = left_rgb[y1_s:y2_s, x1_s:x2_s][valid] / 255.0
+
+    obj_pc = o3d.geometry.PointCloud()
+    obj_pc.points = o3d.utility.Vector3dVector(object_points)
+    obj_pc.colors = o3d.utility.Vector3dVector(object_colors)
+
+else:
+    print(f"No depth or point cloud found in {OUT_DIR}")
+    exit()
+
+
+print(f"Object point cloud: {len(obj_pc.points)} points")
+o3d.io.write_point_cloud(os.path.join(OUT_DIR, "object_pc.ply"), obj_pc)
+np.save(os.path.join(OUT_DIR, "object_points.npy"), np.asarray(obj_pc.points))
+print(f"Saved to {OUT_DIR}/object_pc.ply")
+
+# # Crop stereo pair 
+
+# x1, y1, x2, y2, lp, rp =crop_stereo_pair(
+#     left_path = f"{SCENE_DIR}/im0.png",
+#     right_path = f"{SCENE_DIR}/im1.png",
+#     box = target_box,
+#     out_dir = OUT_DIR,
+#     calib_path=f"{SCENE_DIR}/calib.txt"
+# )
 
 
 
