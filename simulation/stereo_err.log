@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/akilax0/Cook2LTL/simulation/pipeline.py", line 348, in <module>
+    obj_pc.colors = o3d.utility.Vector3dVector(np.asarray(full_pc.colors))[mask]
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: __getitem__(): incompatible function arguments. The following argument types are supported:
+    1. (self: open3d.cuda.pybind.utility.Vector3dVector, s: slice) -> open3d.cuda.pybind.utility.Vector3dVector
+    2. (self: open3d.cuda.pybind.utility.Vector3dVector, arg0: int) -> numpy.ndarray[numpy.float64[3, 1]]
+
+Invoked with: std::vector<Eigen::Vector3d> with 114067 elements.
+Use numpy.asarray() to access data., array([False, False, False, ..., False, False, False], shape=(114067,))
+
+Did you forget to `#include <pybind11/stl.h>`? Or <pybind11/complex.h>,
+<pybind11/functional.h>, <pybind11/chrono.h>, etc. Some automatic
+conversions are optional and require extra headers to be included
+when compiling your pybind11 module.

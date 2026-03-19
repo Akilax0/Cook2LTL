@@ -10,7 +10,7 @@
 #SBATCH --gres=gpu:rtxa6000:1        # Request 1 RTX A6000 GPU (48GB VRAM)
 
 # Load necessary modules (adjust based on your environment)
-module load python/3.11
+# module load python/3.11
 # If you use Conda, activate your environment here:
 # source /homes/youruser/anaconda3/bin/activate foundation_stereo
 
@@ -21,3 +21,4 @@ python pipeline.py
 # sbatch submit_job.sh
 # squeue -u akilax0
 # scancel JOBID
+# srun --pty --partition=tron --qos=medium --mem=64g --gres=gpu:rtxa6000:1 --time=02:00:00 bash

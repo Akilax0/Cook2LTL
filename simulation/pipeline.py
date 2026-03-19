@@ -242,7 +242,6 @@ results = model(f"{SCENE_DIR}/im0.png", conf=0.5)#confidence threshold
 # print(results[0].boxes)
 
 #Finding the target object
-
 target_box = None
 for box in results[0].boxes:
     cls = results[0].names[int(box.cls)]
@@ -345,7 +344,7 @@ if os.path.exists(cloud_path):
     obj_pc = o3d.geometry.PointCloud()
     obj_pc.points = o3d.utility.Vector3dVector(object_points)
     if full_pc.has_colors():
-        obj_pc.colors = o3d.utility.Vector3dVector(np.asarray(full_pc.colors))[mask]
+        obj_pc.colors = o3d.utility.Vector3dVector(np.asarray(full_pc.colors)[mask])
 
 elif os.path.exists(depth_path):
     # Option B: Build from depth map + scaled bbox
@@ -383,15 +382,24 @@ o3d.io.write_point_cloud(os.path.join(OUT_DIR, "object_pc.ply"), obj_pc)
 np.save(os.path.join(OUT_DIR, "object_points.npy"), np.asarray(obj_pc.points))
 print(f"Saved to {OUT_DIR}/object_pc.ply")
 
-# # Crop stereo pair 
-
-# x1, y1, x2, y2, lp, rp =crop_stereo_pair(
-#     left_path = f"{SCENE_DIR}/im0.png",
-#     right_path = f"{SCENE_DIR}/im1.png",
-#     box = target_box,
-#     out_dir = OUT_DIR,
-#     calib_path=f"{SCENE_DIR}/calib.txt"
-# )
 
 
+# Visualization of the object
+# ==================== Checking if the actual object pcd is being selected =====================
+
+import matplotlib
+matplotlib.use("Agg")  # no display needed
+import matplotlib.pyplot as plt
+
+save_path = os.path.join(OUT_DIR, "object_pc_render.png")
+pts = np.asarray(obj_pc.points)
+colors = np.asarray(obj_pc.colors) if obj_pc.has_colors() else None
+
+fig, ax = plt.subplots(figsize=(12, 8))
+ax.scatter(pts[:, 0], -pts[:, 1], c=colors, s=0.5)
+ax.set_aspect("equal")
+ax.set_facecolor("black")
+ax.axis("off")
+fig.savefig(save_path, dpi=150, bbox_inches="tight", facecolor="black")
+plt.close()
 
