@@ -22,6 +22,8 @@ def parse_calib(calib_path):
     """
     
     ================Parse Middlebury calib.txt ================
+    
+    Reads a Middlebury calib.txt file and extracts camera paramters into a dictionary. 
 
     cam0,1: camera matrices for the rectified views [f 0 cx; 0 f cy; 0 0 1]
         f: focal length in pixels
@@ -39,6 +41,7 @@ def parse_calib(calib_path):
         Z = baseline * f / (d +doffs)
     
     """
+
     calib = {}
     with open(calib_path) as f:
         for line in f:
@@ -63,7 +66,12 @@ def parse_calib(calib_path):
 
 def make_intrinsic_file(calib, out_path):
     """
+
+    ================ Make Intrinsic file for FoundationStereo =============================
+
     Convert Middlebury calib.txt into Foundation Stereo's K.txt format.
+    focal length, principal point and baseline for generating a metric-scale point cloud.
+
     Line 1: flattened 1x9 intrisic matrix (from cam0)
     Line 2: baseline in meters
     """
@@ -80,6 +88,16 @@ def make_intrinsic_file(calib, out_path):
 
 
 def visualize_point_cloud(ply_path):
+    
+    """
+    
+    ======================== Load cloud and display the generated point cloud of FoundationStereo ==================================
+
+    Loads .ply point cloud file and display in an Open3D window. 
+    Rotates point cloud 180 around the X axis (because FoundationStereo has Z pointing away from camera )
+    but Open3D default viewer looks down -Z. 
+
+    """
     pcd = o3d.io.read_point_cloud(ply_path)
 
     R = pcd.get_rotation_matrix_from_xyz((np.pi, 0, 0))
@@ -172,58 +190,59 @@ def visualize_point_cloud(ply_path):
 
 #     return disp
 
-def crop_stereo_pair(left_path, right_path, box, out_dir,calib_path=None, padding=20):
-    """
-    Crop both stereo images at the same coordinates. 
-    padding : extra pixels around the bounding box
-    """
+# def crop_stereo_pair(left_path, right_path, box, out_dir,calib_path=None, padding=20):
+#     """
+#     Crop both stereo images at the same coordinates. 
+#     padding : extra pixels around the bounding box
+#     """
 
-    os.makedirs(out_dir, exist_ok=True)
+#     os.makedirs(out_dir, exist_ok=True)
 
-    left = cv2.imread(left_path)
-    right = cv2.imread(right_path)
-    print("left shape:",left.shape)
-    H,W = left.shape[:2]
+#     left = cv2.imread(left_path)
+#     right = cv2.imread(right_path)
+#     print("left shape:",left.shape)
+#     H,W = left.shape[:2]
 
-    # parse ndisp (maximum disparity object can be shifted) from calib.txt
-    # shifting based on depth 
-    if calib_path and os.path.exists(calib_path):
-        with open(calib_path) as f:
-            for line in f:
-                if line.startswith("ndisp"):
-                    ndisp = int(line.split("=")[1])
-                    break
+#     # parse ndisp (maximum disparity object can be shifted) from calib.txt
+#     # shifting based on depth 
+#     if calib_path and os.path.exists(calib_path):
+#         with open(calib_path) as f:
+#             for line in f:
+#                 if line.startswith("ndisp"):
+#                     ndisp = int(line.split("=")[1])
+#                     break
 
-    print(f"Using ndisp={ndisp} for right image offset")
+#     print(f"Using ndisp={ndisp} for right image offset")
 
-    x1, y1, x2, y2 = box
+#     x1, y1, x2, y2 = box
 
-    # left crop std padding
-    lx1 = max(0, x1-padding)
-    ly1 = max(0, y1-padding)
-    lx2 = min(W, x2+padding)
-    ly2 = min(H, y2+padding)
+#     # left crop std padding
+#     lx1 = max(0, x1-padding)
+#     ly1 = max(0, y1-padding)
+#     lx2 = min(W, x2+padding)
+#     ly2 = min(H, y2+padding)
     
-    #Extending right crop
-    rx1 = max(0,x1-padding-ndisp)
-    ry1 = ly1
-    rx2 = min(W, x2+padding)
-    ry2 = ly2
+#     #Extending right crop
+#     rx1 = max(0,x1-padding-ndisp)
+#     ry1 = ly1
+#     rx2 = min(W, x2+padding)
+#     ry2 = ly2
 
-    print("left:",left.shape) 
-    #Crop both IDENTICAL coordinates
-    left_crop = left[ly1:ly2,lx1:lx2]
-    right_crop = right[ry1:ry2, rx1:rx2]
+#     print("left:",left.shape) 
+#     #Crop both IDENTICAL coordinates
+#     left_crop = left[ly1:ly2,lx1:lx2]
+#     right_crop = right[ry1:ry2, rx1:rx2]
 
-    # Saving the crops
-    left_out = os.path.join(out_dir, "crop_im0.png")
-    right_out = os.path.join(out_dir, "crop_im1.png")
-    cv2.imwrite(left_out, left_crop)
-    cv2.imwrite(right_out, right_crop)
+#     # Saving the crops
+#     left_out = os.path.join(out_dir, "crop_im0.png")
+#     right_out = os.path.join(out_dir, "crop_im1.png")
+#     cv2.imwrite(left_out, left_crop)
+#     cv2.imwrite(right_out, right_crop)
 
-    return x1, y1, x2, y2, left_out, right_out
+#     return x1, y1, x2, y2, left_out, right_out
 
 # Config
+
 
 SCENE_DIR = os.path.abspath("./dataset/Middlebury/Adirondack-perfect")
 FOUNDATION_DIR = os.path.abspath("./FoundationStereo")
@@ -232,14 +251,16 @@ TARGET_CLASS = "cup"
 OUT_DIR = "./object_depth_output"
 os.makedirs(OUT_DIR, exist_ok =True)
 
+# Runs at quarter factor to fit GPU memory increase this later
+# 16 for faster than default but less accurate
 SCALE = 0.25
 valid_iters = str(16)
 
 #YOLO detection
 print("Running YOLO26n to detect")
 model = YOLO("yolo26n.pt")
-results = model(f"{SCENE_DIR}/im0.png", conf=0.5)#confidence threshold
-# print(results[0].boxes)
+results = model(f"{SCENE_DIR}/im0.png", conf=0.5) #confidence threshold
+print(results)
 
 #Finding the target object
 target_box = None
@@ -256,23 +277,6 @@ if target_box is None:
     for box in results[0].boxes:
         print(f"  - {results[0].names[int(box.cls)]}")
     exit()
-
-
-# Running FoundationStereo
-# print("Loading Foundation Stereo")
-# fs_model, fs_cfg = load_foundation_stereo(CKPT)
-
-# left_img = cv2.imread(f"{SCENE_DIR}/im0.png")
-# right_img = cv2.imread(f"{SCENE_DIR}/im1.png")
-
-# print("Stereo matching on full images")
-# disparity = run_foundation_stereo(fs_model, left_img, right_img, scale=0.5)
-# print(f"Disparity map shape: {disparity.shape}, range: [{disparity.min():.1f},\
-#       {disparity.max():.1f}]")
-
-# # save disparity visualization 
-# disp_viz  = (disparity - disparity.min()) / (disparity.max() - disparity.min()) * 255 
-# cv2.imwrite(os.path.join(OUT_DIR, "disparity_full.png"), disp_viz.astype(np.uint8))
 
 calib = parse_calib(f"{SCENE_DIR}/calib.txt")
 intrinsic_file = os.path.join(OUT_DIR, "K.txt")
@@ -382,7 +386,19 @@ o3d.io.write_point_cloud(os.path.join(OUT_DIR, "object_pc.ply"), obj_pc)
 np.save(os.path.join(OUT_DIR, "object_points.npy"), np.asarray(obj_pc.points))
 print(f"Saved to {OUT_DIR}/object_pc.ply")
 
+# Save bbox and calib for Script 2
+np.save(os.path.join(OUT_DIR, "target_bbox.npy"), target_box)
+np.save(os.path.join(OUT_DIR, "target_class.npy"), TARGET_CLASS)
 
+# Save scaled calib info that Script 2 needs
+calib_data = {
+    "focal": calib["cam0"][0, 0] * SCALE,
+    "cx": calib["cam0"][0, 2] * SCALE,
+    "cy": calib["cam0"][1, 2] * SCALE,
+    "baseline": calib["baseline"],
+    "scale": SCALE,
+}
+np.save(os.path.join(OUT_DIR, "calib_scaled.npy"), calib_data)
 
 # Visualization of the object
 # ==================== Checking if the actual object pcd is being selected =====================
