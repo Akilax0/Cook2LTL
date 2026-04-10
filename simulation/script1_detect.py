@@ -260,7 +260,10 @@ valid_iters = str(16)
 print("Running YOLO26n to detect")
 model = YOLO("yolo26n.pt")
 results = model(f"{SCENE_DIR}/im0.png", conf=0.5) #confidence threshold
-print(results)
+
+# print("YOLO boxes")
+# for box in results[0].boxes:
+#     print(f"{results[0].names[int(box.cls)]} : {box}")
 
 #Finding the target object
 target_box = None
@@ -305,12 +308,14 @@ if result.returncode !=0:
     print(f"ERROR:\n{result.stderr}")
     exit()
 
+
+# Adjust this later based on how it works with data from the camera
  
-# visualize_point_cloud(f"{OUT_DIR}/cloud.ply")
+# visualize_point_cloud(f"{OUT_DIR}/cloud_denoise.ply")
 
 # Load disparity + extract object point cloud
 depth_path = os.path.join(OUT_DIR, "depth_meter.npy")
-cloud_path = os.path.join(OUT_DIR, "cloud_denoise.ply")
+cloud_path = os.path.join(OUT_DIR, "cloud.ply")
 
 #scale YOLO bbox to match the dowscaled depth/point cloud
 # YOLO ran on full res , FoundationStereo at scale to fit GPU
